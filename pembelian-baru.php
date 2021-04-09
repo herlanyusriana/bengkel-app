@@ -100,12 +100,11 @@ window.onload=function(){
 					?>
 					</select>
 				  </div>
-				
-					
+				  
 				  <div class="form-group row">
-				  <div class="form-group col-md-6" id="dynamic">
+				  <div class="form-group col-md-6">
 				    <label for="id_sparepart">Sparepart</label>
-				    <select class="form-control" id="id_sparepart" name="id_sparepart">
+				    <select class="form-control" id="id_sparepart"  name="id_sparepart">
 					<?php
 					$conn = mysql_connect("localhost","root","");
 					mysql_select_db("db_bengkel",$conn); 
@@ -124,50 +123,41 @@ window.onload=function(){
 					</select>
 				  </div>
 				  <label for="qty">Banyaknya (qty)</label>
-				  <div class="input-group col-md-4" id="dynamic">
+				  <div class="input-group col-md-4">
 				    <td><input type="number" class="form-control" id="qty" name="qty"  required ></td>
 					<td><span class="input-group-btn">
-					<button class="btn btn-success btn-add" type="button" id="tambah"><span class="glyphicon glyphicon-plus" aria-hidden="true">
+					<button class="btn btn-success btn-add" type="button" onclick="education_fields();"><span class="glyphicon glyphicon-plus" aria-hidden="true">
 					</span></button></td>			
 
 					
 				</div>
-				<!-- <div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="form-group">
-						<div class="table-responsive">
-							<table class="table" id="dynamic">
-								<tr>
-									<td><input type="text" placeholder="Masukkan Nama" class="form-control" /></td>
-									<td><button type="button" id="tambah" class="btn btn-success">Add</button></td>
-								</tr>
-							</table>
-							<input type="button" id="submit" class="btn btn-info" value="KIRIM" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
+				
+				
+				
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <script>
-$(document).ready(function(){
 				
-				var no =1;
-				$('#tambah').click(function(){
-					no++;
-					$('#dynamic').append('<tr id="row'+no+'"><td><input type="text" name="name[]" placeholder="Masukkan Nama" class="form-control" /></td><td><button type="button" id="'+no+'" class="btn btn-danger btn_remove">Hapus</button></td></tr>');
-				});
-
-				$(document).on('click', '.btn_remove', function(){
-					var button_id = $(this).attr("id"); 
-					$('#row'+button_id+'').remove();
-				});
-			});
+	var room = 1;
+function education_fields() {
+ 
+    room++;
+    var objTo = document.getElementById('education_fields')
+    var divtest = document.createElement("div");
+	divtest.setAttribute("class", "form-group removeclass"+room);
+	var rdiv = 'removeclass'+room;
+    divtest.innerHTML = '<div class="form-group row"><div class="form-group col-md-6"><label for="id_sparepart">Sparepart</label><select class="form-control" id="id_sparepart"  name="id_sparepart"></select></div><label for="qty">Banyaknya (qty)</label><div class="input-group col-md-4"><td><input type="number" class="form-control" id="qty" name="qty"  required ></td> </select><div class="input-group-btn"> <button class="btn btn-danger" type="button" onclick="remove_education_fields('+ room +');"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button></div></div></div></div><div class="clear"></div>';
+    
+    objTo.appendChild(divtest)
+}
+   function remove_education_fields(rid) {
+	   $('.removeclass'+rid).remove();
+   }
 </script>
 
 				</div>
+				<div id="education_fields">
+		  			</div>
 
 					
 				  <div class="form-group">
