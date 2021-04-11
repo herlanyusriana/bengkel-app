@@ -25,10 +25,6 @@ class Sparepart{
     $stmt->bindParam(2, $this->stock);
     $stmt->bindParam(3, $this->harga);
 
-
-
-	
-	
     
     if($stmt->execute()){
       return true;
@@ -89,7 +85,7 @@ class Sparepart{
         WHERE
           id_sparepart = :id";
 
-    $stmt = $this->conn->prepare($query);
+    $stmt = $this->conn->prepare( $query );
 
     $stmt->bindParam(':sparepart', $this->sparepart);
 	$stmt->bindParam(':stock', $this->stock);

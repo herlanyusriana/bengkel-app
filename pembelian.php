@@ -66,11 +66,11 @@ if(isset($_POST['hapus-contengan'])){
                 <th width="10px"><input type="checkbox" name="select-all" id="select-all" /></th>
                 <th>Nama Pelanggan</th>
                 <th>Nama Mekanik</th>
-                <th>Sparepart</th>
+                <th width="auto">Sparepart</th>
 				<th>Banyaknya (qty)</th>
-				<th>Harga Sparepart</th>
-                <th>Harga Jasa</th>
-				<th>Jumlah</th>
+				<th width="100px">Harga Sparepart</th>
+                <th width="100px">Harga Jasa</th>
+				<th width="100px">Jumlah</th>
 				<th>Tanggal</th>
                 <th width="100px">Aksi</th>
             </tr>

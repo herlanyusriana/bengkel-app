@@ -37,7 +37,7 @@ window.onload=function(){
 		  <div class="col-xs-12 col-sm-12 col-md-10">
 		  <ol class="breadcrumb">
 			  <li><a href="index.php"><span class="fa fa-home"></span> Beranda</a></li>
-			  <li><a href="nilai.php"><span class="fa fa-users"></span> Data Mekanik</a></li>
+			  <li><a href="mekanik.php"><span class="fa fa-users"></span> Data Mekanik</a></li>
 			  <li class="active"><span class="fa fa-pencil"></span> Ubah Data</li>
 			</ol>
 		  	<p style="margin-bottom:10px;">

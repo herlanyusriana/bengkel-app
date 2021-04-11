@@ -136,11 +136,10 @@ window.onload=function(){
 				
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-<script>
-				
+<script>			
 	var room = 1;
 function education_fields() {
- 
+
     room++;
     var objTo = document.getElementById('education_fields')
     var divtest = document.createElement("div");

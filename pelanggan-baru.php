@@ -18,6 +18,10 @@ if($_POST){
 <script type="text/javascript">
 window.onload=function(){
 	showStickySuccessToast();
+	setTimeout(function(){
+		window.location.href = "pelanggan.php";
+
+	}, 1000); 
 };
 </script>
 <?php

@@ -20,7 +20,7 @@ ob_start();
 $host="localhost"; //isi dengan host anda. contoh "localhost"
 $user="root"; //isi dengan username mysql anda. contoh "root"
 $password=""; //isi dengan password mysql anda. jika tidak ada, biarkan kosong.
-$database="bengxell";//isi nama database dengan tepat.
+$database="db_bengkel";//isi nama database dengan tepat.
 mysql_connect($host,$user,$password);
 mysql_select_db($database);
 
@@ -29,6 +29,9 @@ $id_pembelian = $_GET['id'];
 ?>
 
 <style type="text/css">
+
+	
+
 h4, p{
 	text-align:left;
 	font-style:bold;
@@ -42,20 +45,49 @@ h1, h5, h2{
 table {
    border-collapse:collapse;
    width:100%;
+   border: 1px solid #CCC;
 }
  
-table, td, th {
+table, td, {
    border:1px solid black;
+   border: none;
+}
+
+
+th{
+	border:1px solid black;
+}
+th.noBorder{
+	border: none;
 }
  
 tbody tr:nth-child(odd) {
    background-color: #ccc;
 }
-</style>
-<h2>Bengkel MOTOR</h2>
-<h5>Jl, cirebon raya No.144 (0232)8880558</h5>
-<hr>
 
+</style>
+
+
+<!-- <table>
+<thead>
+
+	<th><h2 style="position: relative;top: 18px;left: 10px;">Bengkel Dimas</h2></td>
+	<th><h5 style="position: relative;top: 18px;left: 10px;">Jl, cirebon raya No.144 (0232)8880558</h5></td>
+	<th><img src="images/logo-bengkel.png" style=" float: left;width: 100px;height: 100px;"></td>
+
+</thead>
+</table> -->
+
+<table boder="0">
+<thead >
+<tr>
+<td ><img src="images/logo.png" style=" float: left;width: 100px;height: 100px;"></td>
+<th class="noBorder" h1 style="position: center;top: 18px;left: 10px;">Bengkel Dimas</h1>Sparepart</th>
+<td align="right"><img src="images/logo.png" style=" float: right;width: 100px;height: 100px;"></td>
+</table>
+
+<h5 style="position: relative;top: 18px;left: 10px;">Jl, cirebon raya No.144 (0232)8880558</h5>
+<hr>
 </tr>
 </table>
 
@@ -99,12 +131,12 @@ while($data=mysql_fetch_assoc($sql)){
 ?>
 <tbody>
 <tr>
-<td><?php echo $data['nama_mekanik']?></td>
-<td><?php echo $data['sparepart']?></td>
-<td><?php echo $data['qty']?></td>
-<td><?php echo $data['harga']?></td>
-<td><?php echo $data['harga_jasa']?></td>
-<td>
+<th><?php echo $data['nama_mekanik']?></td>
+<th><?php echo $data['sparepart']?></td>
+<th><?php echo $data['qty']?></td>
+<th><?php echo $data['harga']?></td>
+<th><?php echo $data['harga_jasa']?></td>
+<th>
 <?php 
 	$hs= $data['harga'];
 	$qt= $data['qty'];
@@ -115,7 +147,7 @@ while($data=mysql_fetch_assoc($sql)){
 			
 			?>
 </td>
-<td><?php echo $data['tgl_beli']?></td>
+<th><?php echo $data['tgl_beli']?></td>
 </tr></tbody>';
 <?php
 }

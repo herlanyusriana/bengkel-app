@@ -19,18 +19,21 @@ ob_start();
 $host="localhost"; //isi dengan host anda. contoh "localhost"
 $user="root"; //isi dengan username mysql anda. contoh "root"
 $password=""; //isi dengan password mysql anda. jika tidak ada, biarkan kosong.
-$database="bengxell";//isi nama database dengan tepat.
+$database="db_bengkel";//isi nama database dengan tepat.
 mysql_connect($host,$user,$password);
 mysql_select_db($database);
 ?>
 
 <style type="text/css">
-p{
-	text-align:right;
+
+	
+
+h4, p{
+	text-align:left;
 	font-style:bold;
 	font-size:12px
 }
-h4, h1, h5, h2{
+h1, h5, h2{
 	text-align:center;
 	padding-top:inherit;
 	
@@ -38,18 +41,36 @@ h4, h1, h5, h2{
 table {
    border-collapse:collapse;
    width:100%;
+   border: 1px solid #CCC;
 }
  
+table, td, {
+   border:1px solid black;
+   border: none;
+}
 
+
+th{
+	border:1px solid black;
+}
+th.noBorder{
+	border: none;
+}
  
 tbody tr:nth-child(odd) {
    background-color: #ccc;
 }
 </style>
-<h2>Bengkel MOTOR</h2>
-<h5>Jl, cirebon raya No.144 (0232)8880558</h5>
-<hr>
+<table boder="0">
+<thead >
+<tr>
+<td ><img src="images/logo.png" style=" float: left;width: 100px;height: 100px;"></td>
+<th class="noBorder" h1 style="position: center;top: 18px;left: 10px;">Bengkel Dimas</h1></th>
+<td align="right"><img src="images/logo.png" style=" float: right;width: 100px;height: 100px;"></td>
+</table>
 
+<h5 style="position: relative;top: 18px;left: 10px;">Jl, cirebon raya No.144 (0232)8880558</h5>
+<hr>
 </tr>
 </table>
 <h4>LAPORAN SERVICE</h4>
@@ -60,6 +81,7 @@ tbody tr:nth-child(odd) {
 <thead>
 <tr>
 <th>Nama Mekanik</td>
+<th>Nama Pelanggan</td>
 <th>Sparepart</td>
 <th>Qty</td>
 <th>Harga Sparepart</td>
@@ -76,6 +98,7 @@ while($data=mysql_fetch_assoc($sql)){
 ?>
 <tbody><tr>
 <td><?php echo $data['nama_mekanik']?></td>
+<td><?php echo $data['nama']?></td>
 <td><?php echo $data['sparepart']?></td>
 <td><?php echo $data['qty']?></td>
 <td><?php echo $data['harga']?></td>
