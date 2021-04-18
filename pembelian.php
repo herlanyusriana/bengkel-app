@@ -60,19 +60,16 @@ if(isset($_POST['hapus-contengan'])){
         </div>
     </div>
     <br/>
-    <table width="100%" class="table table-striped table-bordered" id="tabeldata">
+    <table width="100%"  class="table table-striped table-bordered" id="tabeldata">
         <thead>
             <tr>
-                <th width="10px"><input type="checkbox" name="select-all" id="select-all" /></th>
-                <th>Nama Pelanggan</th>
-                <th>Nama Mekanik</th>
-                <th width="auto">Sparepart</th>
-				<th>Banyaknya (qty)</th>
-				<th width="100px">Harga Sparepart</th>
-                <th width="100px">Harga Jasa</th>
-				<th width="100px">Jumlah</th>
-				<th>Tanggal</th>
-                <th width="100px">Aksi</th>
+                <th><input type="checkbox" name="select-all" id="select-all" /></th>
+                <th style="text-align:center">Nama Pelanggan</th>
+                <th style="text-align:center">Nama Mekanik</th>
+                <th style="text-align:center">Sparepart & Qty</th>
+                <th style="text-align:center">Harga Jasa</th>
+                <th style="text-align:center">Jumlah</th>
+                <th style="text-align:center">Aksi</th>
             </tr>
 			
         </thead>
@@ -90,16 +87,15 @@ if(isset($_POST['hapus-contengan'])){
 	
 	
 	?>
+
             <tr>
-                <td style="vertical-align:middle;"><input type="checkbox" value="<?php echo $row['id_pembelian'] ?>" name="checkbox[]" /></td>
-            <td style="vertical-align:middle;"><?php echo $row['nama'] ?></td>
-            <td style="vertical-align:middle;"><?php echo $row['nama_mekanik'] ?></td>
-            <td style="vertical-align:middle;"><?php echo $row['sparepart'] ?></td>
-			<td style="vertical-align:middle;"><?php echo $row['qty'] ?></td>
-			<td style="vertical-align:middle;">Rp. <?php echo  number_format($row['harga'],0,',','.');?></td>
-            <td style="vertical-align:middle;">Rp. <?php echo number_format($row['harga_jasa'],0,',','.');?></td>
-			<td style="vertical-align:middle;">Rp. <?php echo number_format($tot,0,',','.');?></td>
-		    <td style="vertical-align:middle;"><?php echo $row['tgl_beli'] ?></td>
+            <td style="align:center;"><input type="checkbox" value="<?php echo $row['id_pembelian'] ?>" name="checkbox[]" /></td>
+            <td style="align:center;"><?php echo $row['nama'] ?></td>
+            <td style="align:center;"><?php echo $row['nama_mekanik']  ?></td>
+            <td style="align:center;"><?php echo $row['sparepart'] ?></br>
+            <?php echo 'pusing banget mabar ml juga pusing apalagi sama item'; ?></br>
+            <td style="vertical-align:middle;">Rp.<?php echo $row['harga_jasa'] ?></td>
+            <td style="vertical-align:middle;">Rp.<?php echo $row['harga'] ?></td>
 
 
             <td class="text-center" style="vertical-align:middle;">

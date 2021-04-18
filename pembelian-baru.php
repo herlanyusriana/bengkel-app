@@ -101,10 +101,10 @@ window.onload=function(){
 					</select>
 				  </div>
 				  
-				  <div class="form-group row">
+				  <div class="form-group row after-add-more">
 				  <div class="form-group col-md-6">
 				    <label for="id_sparepart">Sparepart</label>
-				    <select class="form-control" id="id_sparepart"  name="id_sparepart">
+				    <select class="form-control" id="id_sparepart"  name="id_sparepart[]">
 					<?php
 					$conn = mysql_connect("localhost","root","");
 					mysql_select_db("db_bengkel",$conn); 
@@ -124,9 +124,9 @@ window.onload=function(){
 				  </div>
 				  <label for="qty">Banyaknya (qty)</label>
 				  <div class="input-group col-md-4">
-				    <td><input type="number" class="form-control" id="qty" name="qty"  required ></td>
+				    <td><input type="number" class="form-control" id="qty" name="qty[]"  required ></td>
 					<td><span class="input-group-btn">
-					<button class="btn btn-success btn-add" type="button" onclick="education_fields();"><span class="glyphicon glyphicon-plus" aria-hidden="true">
+					<button class="btn btn-success add-more" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true">
 					</span></button></td>			
 
 					
@@ -136,28 +136,21 @@ window.onload=function(){
 				
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-<script>			
-	var room = 1;
-function education_fields() {
+<script type="text/javascript">
+    $(document).ready(function() {
+      $(".add-more").click(function(){ 
+          var html = $(".copy").html();
+          $(".after-add-more").after(html);
+      });
 
-    room++;
-    var objTo = document.getElementById('education_fields')
-    var divtest = document.createElement("div");
-	divtest.setAttribute("class", "form-group removeclass"+room);
-	var rdiv = 'removeclass'+room;
-    divtest.innerHTML = '<div class="form-group row"><div class="form-group col-md-6"><label for="id_sparepart">Sparepart</label><select class="form-control" id="id_sparepart"  name="id_sparepart"></select></div><label for="qty">Banyaknya (qty)</label><div class="input-group col-md-4"><td><input type="number" class="form-control" id="qty" name="qty"  required ></td> </select><div class="input-group-btn"> <button class="btn btn-danger" type="button" onclick="remove_education_fields('+ room +');"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button></div></div></div></div><div class="clear"></div>';
-    
-    objTo.appendChild(divtest)
-}
-   function remove_education_fields(rid) {
-	   $('.removeclass'+rid).remove();
-   }
+      // saat tombol remove dklik control group akan dihapus 
+      $("body").on("click",".remove",function(){ 
+          $(this).parents(".control-group").remove();
+      });
+    });
 </script>
 
-				</div>
-				<div id="education_fields">
-		  			</div>
-
+					</div>
 					
 				  <div class="form-group">
 				    <label for="tgl_beli">Tanggal Service</label>
@@ -168,11 +161,47 @@ function education_fields() {
 				    <label for="harga_jasa">Harga Jasa</label>
 				    <input type="text" class="form-control" id="harga_jasa" name="harga_jasa" required>
 				  </div>
+
+				  <div class="form-group">
+				    <label for="diskon">Diskon(%)</label>
+				    <input type="text" class="form-control" id="diskon" name="diskon" required>
+				  </div>
 				  
 				  <button type="submit" class="btn btn-success"><span class="fa fa-save"></span> Simpan</button>
 				  <button type="button" onclick="location.href='pembelian.php'" class="btn btn-info"><span class="fa fa-history"></span> Kembali</button>
 				</form>
 				</div>
+				</div>
+				<div class="copy hide">
+				<div class="form-group row control-group">
+				  <div class="form-group col-md-6">
+				    <label for="id_sparepart">Sparepart</label>
+				    <select class="form-control" id="id_sparepart"  name="id_sparepart[]">
+					<?php
+					$conn = mysql_connect("localhost","root","");
+					mysql_select_db("db_bengkel",$conn); 
+					$result = mysql_query("SELECT * FROM 213_sparepart where stock > 0 ");
+					?>
+					<?php
+					$i=0;
+					while($row = mysql_fetch_array($result)) {
+					?>
+					
+					<option value="<?=$row["id_sparepart"];?>"><?=$row["sparepart"];?></option>
+					<?php
+					$i++;
+					}
+					?>
+					</select>
+				  </div>
+				  <label for="qty">Banyaknya (qty)</label>
+				  <div class="input-group col-md-4">
+				    <td><input type="number" class="form-control" id="qty" name="qty[]"  required ></td>
+					<td><span class="input-group-btn">
+					<button class="btn btn-danger remove" type="button"><span class="glyphicon glyphicon-remove" aria-hidden="true">
+					</span></button></td>			
+
+					
 				</div>
 			  
 		  </div>

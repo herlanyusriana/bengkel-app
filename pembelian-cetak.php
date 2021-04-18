@@ -9,9 +9,12 @@ if(!isset($_SESSION['nama_pengguna'])){
 define('_MPDF_PATH','MPDF57/');
 include(_MPDF_PATH . "mpdf.php");
 $mpdf=new mPDF('utf-8', 'A4'); // Create new mPDF Document
+
  
 //Beginning Buffer to save PHP variables and HTML tags
 ob_start(); 
+// $mpdf->SetDefaultBodyCSS('background',"url('images/bengkel-dimas.png')");
+// $mpdf->SetDefaultBodyCSS('background-image-resize', 6);
 ?>
 <!--sekarang Tinggal Codeing seperti biasanya. HTML, CSS, PHP tidak masalah.-->
 <!--CONTOH Code START-->
@@ -28,69 +31,6 @@ $id_pembelian = $_GET['id'];
 //  echo $id_pembelian;
 ?>
 
-<style type="text/css">
-
-	
-
-h4, p{
-	text-align:left;
-	font-style:bold;
-	font-size:12px
-}
-h1, h5, h2{
-	text-align:center;
-	padding-top:inherit;
-	
-}
-table {
-   border-collapse:collapse;
-   width:100%;
-   border: 1px solid #CCC;
-}
- 
-table, td, {
-   border:1px solid black;
-   border: none;
-}
-
-
-th{
-	border:1px solid black;
-}
-th.noBorder{
-	border: none;
-}
- 
-tbody tr:nth-child(odd) {
-   background-color: #ccc;
-}
-
-</style>
-
-
-<!-- <table>
-<thead>
-
-	<th><h2 style="position: relative;top: 18px;left: 10px;">Bengkel Dimas</h2></td>
-	<th><h5 style="position: relative;top: 18px;left: 10px;">Jl, cirebon raya No.144 (0232)8880558</h5></td>
-	<th><img src="images/logo-bengkel.png" style=" float: left;width: 100px;height: 100px;"></td>
-
-</thead>
-</table> -->
-
-<table boder="0">
-<thead >
-<tr>
-<td ><img src="images/logo.png" style=" float: left;width: 100px;height: 100px;"></td>
-<th class="noBorder" h1 style="position: center;top: 18px;left: 10px;">Bengkel Dimas</h1>Sparepart</th>
-<td align="right"><img src="images/logo.png" style=" float: right;width: 100px;height: 100px;"></td>
-</table>
-
-<h5 style="position: relative;top: 18px;left: 10px;">Jl, cirebon raya No.144 (0232)8880558</h5>
-<hr>
-</tr>
-</table>
-
 <?php
 $query=mysql_query("SELECT * FROM 213_pembelian JOIN 213_mekanik ON 213_pembelian.id_mekanik=213_mekanik.id_mekanik 
 JOIN 213_sparepart ON 213_pembelian.id_sparepart=213_sparepart.id_sparepart 
@@ -102,10 +42,66 @@ $service + mysql_fetch_array($query);
 // print($nm_pelanggan['nama']);
 ?>
 
+<style type="text/css">
+h4,{
+	text-align:center;
+	font-style:bold;
+	font-size:12px
+}
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}
+h1{
+	text-align:center;
+	padding-top:inherit;
+	
+}
+h2{
+	text-align: left;
+}
+h5{
+	text-align: left;
+}
+table {
+   border-collapse:collapse;
+   width:100%;
+}
+
+ 
+table, td, th {
+   border:1px solid black;
+}
+ 
+tbody tr:nth-child(odd) {
+   background-color: #ccc;
+}
+</style>
+<h2>DIMAS MOTOR</h2> 
+<h8><i> WE CARE YOUR CARS</I></h8><br>
+<br>
+<h8>PERUMAHAN MEKAR ASRI 1 BLOK B6/14<br>PANONGAN, BANTEN, TANGERANG 15710<br>0851212236363367/08119341510</h8>
+<div id="textbox">
+<p class=alignleft><b>Nama Pelanggan: </b>
+<?php echo $nm_pelanggan['nama'] ?>
+<p class="alignright">
+<b>Tanggal: </b>
+<?php date_default_timezone_set("Asia/Jakarta"); echo $date = date('Y-m-d |  H:i:s'); ?> 
+</p>
+</p>
+</div>
+<hr>
+
+</tr>
+</table>
+
+
+
 <h4> Surat Perintah Kerja  dengan ( No Service: <?php echo $nm_pelanggan['id_pembelian'] ?> )</h4>
 <p align="left">Nama Kasir: <?php echo $_SESSION['nama_pengguna'] ?></p>
-<p align="left">Tanggal: <?php date_default_timezone_set("Asia/Jakarta"); echo $date = date('Y-m-d |  H:i:s'); ?> </p>
-<p align="left">Nama Pelanggan: <?php echo $nm_pelanggan['nama'] ?> </p>
+
 
 <table >
 <thead>
@@ -131,12 +127,12 @@ while($data=mysql_fetch_assoc($sql)){
 ?>
 <tbody>
 <tr>
-<th><?php echo $data['nama_mekanik']?></td>
-<th><?php echo $data['sparepart']?></td>
-<th><?php echo $data['qty']?></td>
-<th><?php echo $data['harga']?></td>
-<th><?php echo $data['harga_jasa']?></td>
-<th>
+<td><?php echo $data['nama_mekanik']?></td>
+<td><?php echo $data['sparepart']?></td>
+<td><?php echo $data['qty']?></td>
+<td><?php echo $data['harga']?></td>
+<td><?php echo $data['harga_jasa']?></td>
+<td>
 <?php 
 	$hs= $data['harga'];
 	$qt= $data['qty'];
@@ -147,7 +143,7 @@ while($data=mysql_fetch_assoc($sql)){
 			
 			?>
 </td>
-<th><?php echo $data['tgl_beli']?></td>
+<td><?php echo $data['tgl_beli']?></td>
 </tr></tbody>';
 <?php
 }

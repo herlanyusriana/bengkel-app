@@ -47,7 +47,7 @@ window.onload=function(){
 		<div class="panel-body">
 			
 			    <form method="post">
-			    	
+					
 				  <div class="form-group">
 				    <label for="nama_kader">Nama Mekanik</label>
 				    <input type="text" class="form-control" id="nama_mekanik" name="nama_mekanik" value="<?php echo $eks->nama_mekanik; ?>">

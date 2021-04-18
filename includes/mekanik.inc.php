@@ -61,10 +61,8 @@ class Mekanik{
 	// update the product
 	function update(){
 
-		$query = "UPDATE 
-					" . $this->table_name . " 
-				SET 
-					nama_mekanik = :nama_mekanik 
+		$query = "UPDATE " . $this->table_name . " SET 
+					nama_mekanik = :nama_mekanik,
 					umur = :umur
 
 				WHERE

@@ -1,5 +1,5 @@
-			
-		  	<div class="panel panel-default">
+
+			  <div class="panel panel-default">
 			  <div class="panel-heading">
 			    <h3 class="panel-title"><span class="fa fa-dashboard"></span> Dashboard</h3>
 			  </div>

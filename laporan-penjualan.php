@@ -25,52 +25,30 @@ mysql_select_db($database);
 ?>
 
 <style type="text/css">
-
-	
-
-h4, p{
-	text-align:left;
+p{
+	text-align:right;
 	font-style:bold;
 	font-size:12px
 }
-h1, h5, h2{
+h4, h1, h5, h2{
 	text-align:center;
 	padding-top:inherit;
 	
 }
 table {
    border-collapse:collapse;
-   width:100%;
-   border: 1px solid #CCC;
 }
  
-table, td, {
-   border:1px solid black;
-   border: none;
-}
 
-
-th{
-	border:1px solid black;
-}
-th.noBorder{
-	border: none;
-}
  
 tbody tr:nth-child(odd) {
    background-color: #ccc;
 }
 </style>
-<table boder="0">
-<thead >
-<tr>
-<td ><img src="images/logo.png" style=" float: left;width: 100px;height: 100px;"></td>
-<th class="noBorder" h1 style="position: center;top: 18px;left: 10px;">Bengkel Dimas</h1></th>
-<td align="right"><img src="images/logo.png" style=" float: right;width: 100px;height: 100px;"></td>
-</table>
-
-<h5 style="position: relative;top: 18px;left: 10px;">Jl, cirebon raya No.144 (0232)8880558</h5>
+<h2>Bengkel MOTOR</h2>
+<h5>Jl, cirebon raya No.144 (0232)8880558</h5>
 <hr>
+
 </tr>
 </table>
 <h4>LAPORAN SERVICE</h4>
@@ -93,7 +71,7 @@ tbody tr:nth-child(odd) {
 </tr>
 </thead>
 <?php 
-$sql=mysql_query("SELECT * FROM 213_pembelian JOIN 213_mekanik ON 213_pembelian.id_mekanik=213_mekanik.id_mekanik JOIN 213_sparepart ON 213_pembelian.id_sparepart=213_sparepart.id_sparepart ORDER BY id_pembelian ASC");
+$sql=mysql_query("SELECT * FROM 213_pembelian JOIN 213_mekanik ON 213_pembelian.id_mekanik=213_mekanik.id_mekanik JOIN 213_sparepart ON 213_pembelian.id_sparepart=213_sparepart.id_sparepart JOIN 213_pelanggan ON 213_pembelian.id_pelanggan=213_pelanggan.id_pelanggan ORDER BY id_pembelian DESC");
 while($data=mysql_fetch_assoc($sql)){
 ?>
 <tbody><tr>

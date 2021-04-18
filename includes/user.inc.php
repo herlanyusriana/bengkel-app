@@ -15,7 +15,7 @@ class User{
 	
 	function insert(){
 		
-		$query = "insert into ".$this->table_name." values('',?,?,?)";
+		$query = "insert into ".$this->table_name." values('',?,?,?,'Y')";
 		$stmt = $this->conn->prepare($query);
 		$stmt->bindParam(1, $this->nl);
 		$stmt->bindParam(2, $this->un);

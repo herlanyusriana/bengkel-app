@@ -5,6 +5,7 @@ $pro = new Pembelian($db);
 $stmt = $pro->readmen();
 $stmt2 = $pro->countAll();
 ?>
+        <body>
 		<div class="row">
 		  <div class="col-xs-12 col-sm-12 col-md-2">
 		  	<?php
@@ -22,7 +23,7 @@ $stmt2 = $pro->countAll();
 			<!--DATA LOG ADMIN-->
 			<div class="row">
     <div class="col-lg-12">
-        <div class="panel panel-default">
+        <div class="panel panel-body">
             <div class="panel-heading">
                 <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Info Admin</h3>
             </div>
@@ -36,12 +37,12 @@ $stmt2 = $pro->countAll();
                             <tr>
                                 <th>Username</th>
                                 <th>:</th>
-                                <td><?php echo $_SESSION["username"]?></td>
+                                <td><?php echo $_SESSION['username']?></td>
                             </tr>
                             <tr>
                                 <th>Nama Lengkap</th>
                                 <th>:</th>
-                                <td><?php echo $_SESSION["nama_pengguna"] ?></td>
+                                <td><?php echo $_SESSION['nama_pengguna'] ?></td>
                             </tr>
                             
                             </tbody>
@@ -99,10 +100,11 @@ $stmt2 = $pro->countAll();
 	<script src="js/canvasjs.min.js"></script>
 	<script type="text/javascript">
 		window.onload = function () {
-			var chart = new CanvasJS.Chart("chartContainer", {
+			var chart = new CanvasJS.Chart("chartContainer", {  
 				title: {
 					text: "Data Service"
 				},
+                
 				data: [{
 					type: "column",
 					dataPoints: [
